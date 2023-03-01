@@ -1,0 +1,31 @@
+{% extends 'front.html.twig' %}
+
+
+{% block body %}
+        <div class="container">
+            <div class="row">
+
+            {% for category in categories %}
+                <div class="col-lg-4 col-md-6">
+                    <div class="single-blog-post-box">
+                        <div class="post-image">
+                            <a href="{{ path('app_front_details',{'id' :category.id}) }}" >
+                                <img src="{{ asset('front_css/img/blog-img1.jpg') }}" alt="image">
+                            </a>
+                        </div>
+
+                        <div class="post-content">
+                            <ul class="post-meta">
+                                <li>{{ category.nom }}</li>
+                                <li>{{ category.postForums.count ~ " Posts" }}</li>
+                                <li></li>
+                            </ul>
+                            <h3><a href="{{ path('app_front_details',{'id' :category.id}) }}">{{ category.description }}</a></h3>
+                            <a href="{{ path('app_front_details',{'id' :category.id}) }}" class="read-more-btn">Read More <i class="flaticon-null"></i></a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+{% endblock %}

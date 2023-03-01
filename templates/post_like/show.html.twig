@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}PostLike{% endblock %}
+
+{% block body %}
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <h1>Gestion des Likes du forum</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item">Gestion Forum</li>
+                <li class="breadcrumb-item active">Likes</li>
+                <li class="breadcrumb-item active">Details </li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+        <div class="row">
+            <div >
+                <div class="card">
+                    <div class="card-body">
+                        <table class="table table-info" style="margin:2rem 0 2rem 0">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ post_like.id }}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{{ post_like.type ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>User_id</th>
+                <td>{{ post_like.userId }}</td>
+            </tr>
+        </tbody>
+    </table>
+                        </table>
+                        <div class="row mb-3">
+                            <a class="btn btn-primary" href="{{ path('app_post_like_edit', {'id': post_like.id}) }}">Edit</a>
+                        </div>
+
+
+
+                        {{ include('post_like/_delete_form.html.twig') }}
+
+                        <div class="row mb-3">
+                            <a class="btn btn-secondary"href="{{ path('app_post_like_index') }}">Back to list</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</main><!-- End #main -->
+
+
+{% endblock %}

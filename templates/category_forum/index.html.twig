@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Categories List{% endblock %}
+
+{% block body %}
+
+
+    <main id="main" class="main">
+
+        <div class="pagetitle">
+            <h1>Gestion des Categories du forum</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item">Gestion Forum</li>
+                    <li class="breadcrumb-item active">Categories</li>
+                </ol>
+            </nav>
+        </div><!-- End Page Title -->
+        <div  style="display:flex;justify-content: center;align-items: center;margin:1rem 0;"> <button class="btn btn-primary"> <a style="color:white;text-decoration: none" href="{{ path('app_category_forum_new') }}">Create new</a></button>
+        </div>
+        <section class="section">
+            <div class="row">
+                <div >
+                    <div class="card">
+                        <div class="card-body">
+                            <table class="table table-info" style="margin:2rem 0 2rem 0">
+                                <thead>
+                                <tr>
+                                    <th style="text-align: center">Id</th>
+                                    <th colspan="2" style="text-align: center">Nom</th>
+                                    <th colspan="4" style="text-align: center">Description</th>
+                                    <th colspan="1" style="text-align: center">actions</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for category_forum in category_forums %}
+                                    <tr>
+                                        <td style="text-align: center">{{ category_forum.id }}</td>
+                                        <td colspan="2" style="text-align: center">{{ category_forum.nom }}</td>
+                                        <td colspan="4" style="text-align: center">{{ category_forum.description }}</td>
+                                        <td colspan="1" style="text-align: center">
+                                            <a class="btn btn-primary" href="{{ path('app_category_forum_show', {'id': category_forum.id}) }}">Show</a>
+                                            <a class="btn btn-danger" href="{{ path('app_category_forum_edit', {'id': category_forum.id}) }}">Edit</a>
+                                        </td>
+                                    </tr>
+                                {% else %}
+                                    <tr>
+                                        <td colspan="8" style="text-align: center">No records found</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main><!-- End #main -->
+
+
+{% endblock body %}

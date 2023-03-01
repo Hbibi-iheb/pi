@@ -1,0 +1,38 @@
+<div class="tab-pane fade profile-edit pt-3 active show">
+{{ form_start(form, {'attr': {'novalidate':'novalidate'}}) }}
+    {%  if form_errors(form.nom)  is not empty  %}
+
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <i class="bi bi-exclamation-octagon me-1"></i>
+        {{ form_errors(form.nom) }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endif %}
+<div class="row mb-3">
+    {{ form_label(form.nom) }}
+
+    <div class="col-md-8 col-lg-9">
+        {{ form_widget(form.nom) }}
+    </div>
+</div>
+    {%  if form_errors(form.description)  is not empty  %}
+
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <i class="bi bi-exclamation-octagon me-1"></i>
+        {{ form_errors(form.description) }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endif %}
+    <div class="row mb-3">
+        {{ form_label(form.description) }}
+
+        <div class="col-md-8 col-lg-9">
+            {{ form_widget(form.description) }}
+        </div>
+
+    </div>
+    <div class="row mb-3">
+    <button class="btn btn-primary">{{ button_label|default('Save') }}</button>
+    </div>
+{{ form_end(form) }}
+</div>

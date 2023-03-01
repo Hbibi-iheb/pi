@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CommentairePost{% endblock %}
+
+{% block body %}
+    <main id="main" class="main">
+
+        <div class="pagetitle">
+            <h1>Gestion des Commentaire du forum</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item">Gestion Forum</li>
+                    <li class="breadcrumb-item active">Commentaire</li>
+                    <li class="breadcrumb-item active">Details</li>
+                </ol>
+            </nav>
+        </div><!-- End Page Title -->
+
+        <section class="section">
+            <div class="row">
+                <div >
+                    <div class="card">
+                        <div class="card-body">
+                            <table class="table table-info" style="margin:2rem 0 2rem 0">
+                                <tbody>
+                                <tr>
+                                    <th>Id</th>
+                                    <td>{{ commentaire_post.id }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Contenu</th>
+                                    <td>{{ commentaire_post.contenu }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Created_at</th>
+                                    <td>{{ commentaire_post.createdAt ? commentaire_post.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                                </tr>
+                                <tr>
+                                    <th>User_id</th>
+                                    <td>{{ commentaire_post.userId }}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <div class="row mb-3">
+                                <a class="btn btn-primary" href="{{ path('app_commentaire_post_edit', {'id': commentaire_post.id}) }}">Edit</a>
+                            </div>
+
+                            {{ include('commentaire_post/_delete_form.html.twig') }}
+                            <div class="row mb-3">
+                                <a class="btn btn-secondary"href="{{ path('app_commentaire_post_index') }}">Back to list</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main><!-- End #main -->
+
+
+
+{% endblock %}

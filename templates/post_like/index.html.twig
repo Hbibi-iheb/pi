@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}PostLike index{% endblock %}
+
+{% block body %}
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <h1>Gestion des Likes du forum</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item">Gestion Forum</li>
+                <li class="breadcrumb-item active">Like</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+    <div  style="display:flex;justify-content: center;align-items: center;margin:1rem 0;"> <button class="btn btn-primary"> <a style="color:white;text-decoration: none" href="{{ path('app_post_like_new') }}">Create new</a></button>
+    </div>
+    <section class="section">
+        <div class="row">
+            <div >
+                <div class="card">
+                    <div class="card-body">
+
+                        <table class="table table-info" style="margin:2rem 0 2rem 0">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Type</th>
+                <th>User_id</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for post_like in post_likes %}
+            <tr>
+                <td>{{ post_like.id }}</td>
+                <td>{{ post_like.type ? 'Yes' : 'No' }}</td>
+                <td>{{ post_like.userId }}</td>
+                <td>
+                    <a class="btn btn-primary" href="{{ path('app_post_like_show', {'id': post_like.id}) }}">Show</a>
+                    <a class="btn btn-danger" href="{{ path('app_post_like_edit', {'id': post_like.id}) }}">Edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</main><!-- End #main -->
+
+{% endblock %}
